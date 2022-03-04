@@ -1,5 +1,5 @@
 import { IExecOptions } from '../types'
-import { exec, runCommand } from '../utils'
+import { exec, runCommand, successLog } from '../utils'
 import { green } from 'colors'
 
 /**
@@ -8,14 +8,13 @@ import { green } from 'colors'
  */
 class ViteRun {
   async apply(options: IExecOptions) {
-    const { tpl, tool, projectName, rootPath, callback } = options
+    const { tpl, tool, projectName, rootPath, callback, projectPath } = options
 
     // 表示npm版本
     let npmVersion = ''
     if (tool === 'npm') {
       try {
         npmVersion = await exec('npm --version')
-        console.log(npmVersion)
       } catch (e) {
         console.log(e)
         process.exit(1)
@@ -42,7 +41,12 @@ class ViteRun {
 
     // 执行命令
     await runCommand(tool, commandOptions, { cwd: rootPath })
-    console.log(`${green('success')}  1. Vite generated project<${projectName}> successfully `)
+    successLog(`1. Vite generated project<${projectName}> successfully `)
+
+    // 进行依赖注册
+    await runCommand(tool, ['install'], { cwd: projectPath })
+    successLog(`2. project<${projectName}> dependencies installed successfully `)
+
     callback && callback()
   }
 }

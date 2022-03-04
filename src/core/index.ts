@@ -1,7 +1,9 @@
 import { IExecOptions } from '../types'
 import viteRun from './viteRun'
+import gitInitRun from './gitInitRun'
+import { successLog } from '../utils'
 
-const execStacks = [viteRun]
+const execStacks = [viteRun, gitInitRun]
 /**
  * @author lihh
  * @description 开始执行命令
@@ -12,7 +14,7 @@ const run = async (options: IExecOptions) => {
 
   // 表示成功的回调
   function success() {
-    console.log('执行成功')
+    successLog(`end: Project initialization succeeded`)
   }
 
   async function next(index: number) {

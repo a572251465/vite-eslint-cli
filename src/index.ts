@@ -9,6 +9,8 @@ import { ICmdOptions, IExecOptions } from './types'
 import prompts from 'prompts'
 import run from './core'
 
+const path = require('path')
+
 /**
  * @author lihh
  * @description 表示闻讯函数
@@ -68,7 +70,8 @@ program.action(async (projectName: string) => {
   // 选择执行工具
   const tool = await promptHandle(tpl)
   const rootPath = process.cwd()
-  const options = { tpl, ...tool, rootPath, projectName } as IExecOptions
+  const projectPath = path.resolve(rootPath, projectName)
+  const options = { tpl, ...tool, rootPath, projectName, projectPath } as IExecOptions
 
   // 开始运行命令
   await run(options)

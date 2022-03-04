@@ -1,3 +1,5 @@
+import { green } from 'colors'
+
 const path = require('path')
 const fs = require('fs')
 const cp = require('child_process')
@@ -52,6 +54,8 @@ const runCommand = (
     // fail
     executedCommand.on('error', (error: string | undefined) => {
       reject(new Error(error))
+      console.log(error)
+      process.exit(1)
     })
 
     // success
@@ -79,9 +83,19 @@ const exec = <T>(command: string, options: ISpawnOptions = {}) => new Promise<T>
   })
 })
 
+/**
+ * @author lihh
+ * @description 专门用来打印成功的log
+ * @param message
+ */
+const successLog = (message: string) => {
+  console.log(`${green('success')}  ${message} `)
+}
+
 export {
   getConfigFile,
   getCommanderOptions,
   runCommand,
-  exec
+  exec,
+  successLog
 }

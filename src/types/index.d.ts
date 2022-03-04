@@ -22,6 +22,7 @@ export interface IExecOptions {
   isPinia: boolean,
   isVueRouter: boolean,
   rootPath: string,
+  projectPath: string
   callback?: (...argv: any) => any
 }
 
