@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs')
-import { ICommanderOptions, IPackageInfo } from '../types'
+const cp = require('child_process')
+import { ICommanderOptions, IPackageInfo, ISpawnOptions } from '../types'
 
 /**
  * @author lihh
@@ -29,7 +30,58 @@ const getCommanderOptions = (): ICommanderOptions[] => {
   ] as ICommanderOptions[]
 }
 
+/**
+ * @author lihh
+ * @description 要求执行cmd命令
+ * @param command 命令名称 npm/ yarn/ pnpm
+ * @param args 表示npm等其余的参数 tsc init等
+ * @param options spawn 其余参数
+ */
+const runCommand = (
+  command: string,
+  args: string[],
+  options: ISpawnOptions = {}
+): Promise<any> =>
+  new Promise((resolve, reject) => {
+    const executedCommand = cp.spawn(command, args, {
+      stdio: 'inherit',
+      shell: true,
+      ...options
+    })
+
+    // fail
+    executedCommand.on('error', (error: string | undefined) => {
+      reject(new Error(error))
+    })
+
+    // success
+    executedCommand.on('exit', (code: number, ...args: any) => {
+      if (code === 0) {
+        resolve('')
+      } else {
+        reject(new Error(''))
+      }
+    })
+  })
+
+/**
+ * @author lihh
+ * @description 直接执行的命令
+ * @param command
+ */
+const exec = <T>(command: string, options: ISpawnOptions = {}) => new Promise<T>((resolve, reject) => {
+  cp.exec(command, options, (error: string, output: T) => {
+    if (error) {
+      reject(error)
+    } else {
+      resolve(output)
+    }
+  })
+})
+
 export {
   getConfigFile,
-  getCommanderOptions
+  getCommanderOptions,
+  runCommand,
+  exec
 }
