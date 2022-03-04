@@ -1,0 +1,47 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "vite-eslint-cli",
+      "version": "1.0.0",
+      "description": "",
+      "main": "index.js",
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "keywords": [],
+      "author": "",
+      "license": "ISC"
+    },
+    "prefix": "F:\\my-project\\vite-eslint-cli"
+  },
+  "2 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "F:\\.pnpm-store\\v3",
+    "virtualStoreDir": "F:\\my-project\\vite-eslint-cli\\node_modules\\.pnpm"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "F:\\my-project\\vite-eslint-cli",
+    "stage": "resolution_started"
+  },
+  "4 error pnpm": {
+    "code": "ERR_PNPM_FETCH_404",
+    "hint": "perttier is not in the npm registry, or you have no permission to fetch it.\n\nNo authorization header was set for the request.",
+    "request": {
+      "url": "https://registry.npm.taobao.org/perttier"
+    },
+    "response": {
+      "size": 0
+    },
+    "pkgName": "perttier",
+    "pkgsStack": [],
+    "err": {
+      "name": "pnpm",
+      "message": "GET https://registry.npm.taobao.org/perttier: Not Found - 404",
+      "code": "ERR_PNPM_FETCH_404",
+      "stack": "pnpm: GET https://registry.npm.taobao.org/perttier: Not Found - 404\n    at RetryOperation._fn (C:\\Users\\Lenovo\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:85680:19)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)"
+    }
+  }
+}
