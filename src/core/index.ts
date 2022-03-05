@@ -3,8 +3,9 @@ import viteRun from './viteRun'
 import gitInitRun from './gitInitRun'
 import { successLog } from '../utils'
 import eslintRun from './eslintRun'
+import prettierRun from './prettierRun'
 
-const execStacks = [viteRun, gitInitRun, eslintRun]
+const execStacks = [viteRun, gitInitRun, eslintRun, prettierRun]
 /**
  * @author lihh
  * @description 开始执行命令

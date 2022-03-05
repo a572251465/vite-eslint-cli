@@ -19,7 +19,7 @@ class EslintRun {
     // 获取可以执行的模板
     const plugins = getDependentPlugins(flags)
     if (plugins.length === 0) {
-      warningLog(`该脚手架暂时不支持<eslint-${tpl}>, 后续逐渐支持，请持续关注. 但是vite创建的项目已经可以使用`)
+      warningLog(`该脚手架暂时不支持<${flags}>, 后续逐渐支持，请持续关注. 但是vite创建的项目已经可以使用`)
       callback && callback('end')
       return
     }

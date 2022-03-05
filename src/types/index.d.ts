@@ -26,7 +26,7 @@ export interface IExecOptions {
   callback?: (...argv: any) => any
 }
 
-interface ISpawnOptions {
+export interface ISpawnOptions {
   cwd?: string
   env?: object
   argv0?: string
@@ -38,3 +38,8 @@ interface ISpawnOptions {
   timeout?: number
 }
 
+export interface IEslintrc {
+  root?: boolean,
+  env?: Record<string, string>
+  extends?: string[]
+}

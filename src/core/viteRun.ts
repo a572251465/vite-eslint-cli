@@ -41,6 +41,15 @@ class ViteRun {
 
     // 执行命令
     await runCommand(tool, commandOptions, { cwd: rootPath })
+
+    // 表示其余的插件
+    const otherPlugins = []
+    if (options.isPinia) otherPlugins.push('pinia', 'pinia-plugin-persist')
+    if (options.isVueRouter) otherPlugins.push('vue-router')
+    if (otherPlugins.length > 0) {
+      await runCommand(tool, ['install'].concat(otherPlugins.concat(['-S'])), { cwd: projectPath })
+    }
+
     successLog(`1. Vite generated project<${projectName}> successfully `)
 
     // 进行依赖注册
