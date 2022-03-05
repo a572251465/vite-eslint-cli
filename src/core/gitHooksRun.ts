@@ -18,7 +18,7 @@ class GitHooksRun {
 
     // 开始注册执行插件
     await runCommand('npx', ['husky', 'install'], { cwd: projectPath })
-    await runCommand(tool, ['install', 'husky', 'lint-staged', '-D'], { cwd: projectPath })
+    await runCommand(tool, [tool === 'yarn' ? 'add' : 'install', 'husky', 'lint-staged', '-D'], { cwd: projectPath })
 
     // 读取package配置文件 修改内容
     try {
@@ -36,7 +36,7 @@ class GitHooksRun {
       fs.writeFileSync(packagePath, JSON.stringify(packageInfo, null, '  '))
 
       // 安装commitlint插件
-      await runCommand(tool, ['install', '@commitlint/cli', '@commitlint/config-conventional', '-D'], { cwd: projectPath })
+      await runCommand(tool, [tool === 'yarn' ? 'add' : 'install', '@commitlint/cli', '@commitlint/config-conventional', '-D'], { cwd: projectPath })
 
       // 开始复制commitlint文件
       const basePath = resolvePath('./template')

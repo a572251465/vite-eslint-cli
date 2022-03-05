@@ -25,7 +25,7 @@ class EslintRun {
     }
 
     // 执行command命令
-    await runCommand(tool, ['install'].concat(plugins).concat(['-D']), { cwd: projectPath })
+    await runCommand(tool, [tool === 'yarn' ? 'add' : 'install'].concat(plugins).concat(['-D']), { cwd: projectPath })
     // 复制配置文件
     const basePath = resolvePath('./template')
 

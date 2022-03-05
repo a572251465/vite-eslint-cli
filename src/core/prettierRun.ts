@@ -27,7 +27,7 @@ class PrettierRun {
     }
 
     // 开始注册插件
-    await runCommand(tool, ['install'].concat(plugins).concat(['-D']), { cwd: projectPath })
+    await runCommand(tool, [tool === 'yarn' ? 'add' : 'install'].concat(plugins).concat(['-D']), { cwd: projectPath })
 
     // 开始复制文件
     const basePath = resolvePath('./template')
