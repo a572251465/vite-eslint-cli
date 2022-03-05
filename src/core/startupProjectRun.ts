@@ -3,6 +3,7 @@
  * @description 表示启动项目
  */
 import { IExecOptions } from '../types'
+import { runCommand } from '../utils'
 
 class StartupProjectRun {
   /**
@@ -10,8 +11,11 @@ class StartupProjectRun {
    * @description 项目入口
    * @param options
    */
-  apply(options: IExecOptions) {
+  async apply(options: IExecOptions) {
+    const { tool, projectPath, callback } = options
 
+    await runCommand(tool, ['dev'], { cwd: projectPath })
+    callback && callback()
   }
 }
 

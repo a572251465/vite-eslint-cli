@@ -24,22 +24,9 @@ const promptHandle = async (tpl: string) => {
     choices: ['npm', 'yarn', 'pnpm'].map(item => ({ title: item, value: item }))
   }] as prompts.PromptObject[]
 
-  // 判断是否选择vue模板
-  if (tpl.includes('vue')) {
-    baseOptions = baseOptions.concat([{
-      type: 'confirm',
-      name: 'isPinia',
-      message: 'Need to support Pinia?'
-    }, {
-      type: 'confirm',
-      name: 'isVueRouter',
-      message: 'Need to support vue-router?'
-    }] as prompts.PromptObject[])
-  }
-
   const res = await prompts(baseOptions)
 
-  return res
+  return { ...res, isPinia: true, isVueRouter: true }
 }
 
 const program = new Command()

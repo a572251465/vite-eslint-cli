@@ -31,7 +31,7 @@ class PrettierRun {
 
     // 开始复制文件
     const basePath = resolvePath('./template')
-    const fileArr = ['.prettierrc.js', '.prettierignore']
+    const fileArr = ['.prettierrc', '.prettierignore']
     fileArr.forEach(fileName => {
       copyFile(joinPath(basePath, fileName), joinPath(projectPath, fileName))
     })

@@ -4,7 +4,7 @@ const path = require('path')
 const fs = require('fs')
 const cp = require('child_process')
 import { ICommanderOptions, IPackageInfo, ISpawnOptions } from '../types'
-import { copySync, moveSync } from 'fs-extra'
+import { copySync, moveSync, removeSync } from 'fs-extra'
 
 /**
  * @author lihh
@@ -133,6 +133,13 @@ const copyFile = (src: string, dest: string) => copySync(src, dest)
  */
 const moveFile = (src: string, dest: string, options = { overwrite: true }) => moveSync(src, dest, options)
 
+/**
+ * @author lihh
+ * @description 用来删除文件夹以及文件 可以是包含关系
+ * @param target 删除路径
+ */
+const removeFileAndDir = (target: string) => removeSync(target)
+
 export {
   getConfigFile,
   getCommanderOptions,
@@ -143,5 +150,6 @@ export {
   resolvePath,
   joinPath,
   copyFile,
-  moveFile
+  moveFile,
+  removeFileAndDir
 }

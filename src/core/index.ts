@@ -6,8 +6,9 @@ import eslintRun from './eslintRun'
 import prettierRun from './prettierRun'
 import gitHooksRun from './gitHooksRun'
 import startupProjectRun from './startupProjectRun'
+import replaceTplRun from './replaceTplRun'
 
-const execStacks = [viteRun, gitInitRun, eslintRun, prettierRun, gitHooksRun]
+const execStacks = [viteRun, gitInitRun, eslintRun, prettierRun, gitHooksRun, replaceTplRun]
 /**
  * @author lihh
  * @description 开始执行命令
