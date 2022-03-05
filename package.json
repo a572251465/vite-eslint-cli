@@ -8,6 +8,10 @@
   "scripts": {
     "build": "rollup -c build/rollup.config.js"
   },
+  "files": [
+    "dist",
+    "entry"
+  ],
   "keywords": [
     "rollup",
     "vue3",
@@ -16,6 +20,14 @@
     "commitlint",
     "prettier"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/a572251465/vite-eslint-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/a572251465/vite-eslint-cli/issues"
+  },
+  "homepage": "https://github.com/a572251465/vite-eslint-cli",
   "author": "lihaohao",
   "license": "MIT",
   "devDependencies": {
