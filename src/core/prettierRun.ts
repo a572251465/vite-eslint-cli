@@ -42,7 +42,7 @@ class PrettierRun {
     eslintrcConfig.extends!.push('prettier')
     if (tpl.startsWith('vue')) eslintrcConfig.extends!.push('@vue/eslint-config-prettier')
     // 开始写文件
-    fs.writeFileSync(fileDir, `module.exports = ${JSON.stringify(eslintrcConfig, null, '\t')}`, { encoding: 'utf-8' })
+    fs.writeFileSync(fileDir, `module.exports = ${JSON.stringify(eslintrcConfig, null, '  ')}`, { encoding: 'utf-8' })
 
     successLog('5. prettier configuration succeeded')
     callback && callback()

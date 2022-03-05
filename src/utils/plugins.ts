@@ -4,7 +4,7 @@
  */
 
 const allPlugins: Record<string, string> = {
-  'eslint-vue-ts': 'eslint-plugin-vue, @typescript-eslint/parser, @typescript-eslint/eslint-plugin, @vue/eslint-config-typescript',
+  'eslint-vue-ts': 'eslint, eslint-plugin-vue, @typescript-eslint/parser, @typescript-eslint/eslint-plugin, @vue/eslint-config-typescript',
   'prettier-vue-ts': 'prettier, eslint-plugin-prettier, @vue/eslint-config-prettier'
 }
 
@@ -25,7 +25,6 @@ const getDependentPlugins = (key: string): string[] => {
   const plugins = values === '' ? [] : matchingVersion(values.split(', '))
   return plugins
 }
-
 
 
 export default getDependentPlugins
