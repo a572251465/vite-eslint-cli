@@ -1,9 +1,10 @@
-import { green } from 'colors'
+import { green, yellow } from 'colors'
 
 const path = require('path')
 const fs = require('fs')
 const cp = require('child_process')
 import { ICommanderOptions, IPackageInfo, ISpawnOptions } from '../types'
+import { copySync, moveSync } from 'fs-extra'
 
 /**
  * @author lihh
@@ -92,10 +93,55 @@ const successLog = (message: string) => {
   console.log(`${green('success')}  ${message} `)
 }
 
+/**
+ * @author lihh
+ * @description 表示警告的message
+ * @param message 需要打印的消息
+ */
+const warningLog = (message: string) => {
+  console.log(`${yellow('warning')} ${message}`)
+}
+
+/**
+ * @author lihh
+ * @description 解析url 地址
+ * @param urls 需要拼接的url
+ */
+const resolvePath = (...urls: string[]) => path.resolve(__dirname, ...urls)
+
+/**
+ * @author lihh
+ * @description 表示拼接url 地址
+ * @param urls 待拼接地址
+ */
+const joinPath = (...urls: string[]) => path.join(...urls)
+
+/**
+ * @author lihh
+ * @description 进行文件复制
+ * @param src 来源地址
+ * @param dest 复制目的地
+ */
+const copyFile = (src: string, dest: string) => copySync(src, dest)
+
+/**
+ * @author lihh
+ * @description 进行文件的移动
+ * @param src 原文件
+ * @param dest 移动地址
+ * @param options 表示是否覆盖等参数
+ */
+const moveFile = (src: string, dest: string, options = { overwrite: true }) => moveSync(src, dest, options)
+
 export {
   getConfigFile,
   getCommanderOptions,
   runCommand,
   exec,
-  successLog
+  successLog,
+  warningLog,
+  resolvePath,
+  joinPath,
+  copyFile,
+  moveFile
 }

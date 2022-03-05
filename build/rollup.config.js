@@ -5,6 +5,7 @@ const typescript = require('rollup-plugin-typescript2')
 const json = require('@rollup/plugin-json')
 const del = require('rollup-plugin-delete')
 const resolvePath = url => path.resolve(__dirname, url)
+const copy = require('rollup-plugin-copy')
 
 module.exports = {
   input: resolvePath('../src/index.ts'),
@@ -22,6 +23,11 @@ module.exports = {
     }),
     commonjs(),
     nodeResolve(),
-    json()
+    json(),
+    copy({
+      targets: [
+        { src: 'src/template', dest: 'dist/' }
+      ]
+    })
   ]
 }
