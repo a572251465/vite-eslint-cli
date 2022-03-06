@@ -1,6 +1,6 @@
 {
   "name": "vite-eslint-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "基于vite + vue3/ vite + react等, 实现eslint prettier部署，内置vite vue3运行方式，执行代码构建以及eslint部署一体. 内置(pinia,vue-router等)",
   "bin": {
     "vite-eslint-cli": "entry/index.js"
@@ -39,6 +39,7 @@
     "@types/prompts": "^2.0.14",
     "colors": "^1.4.0",
     "commander": "^9.0.0",
+    "eslint": "^8.10.0",
     "fs-extra": "^10.0.1",
     "prettier": "^2.5.1",
     "prompts": "^2.4.2",

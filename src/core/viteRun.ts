@@ -1,6 +1,5 @@
 import { IExecOptions } from '../types'
 import { exec, runCommand, successLog } from '../utils'
-import { green } from 'colors'
 
 /**
  * @author lihh
@@ -47,14 +46,22 @@ class ViteRun {
     if (options.isPinia) otherPlugins.push('pinia', 'pinia-plugin-persist')
     if (options.isVueRouter) otherPlugins.push('vue-router')
     if (otherPlugins.length > 0) {
-      await runCommand(tool, [tool === 'yarn' ? 'add' : 'install'].concat(otherPlugins.concat(['-S'])), { cwd: projectPath })
+      await runCommand(
+        tool,
+        [tool === 'yarn' ? 'add' : 'install'].concat(
+          otherPlugins.concat(['-S'])
+        ),
+        { cwd: projectPath }
+      )
     }
 
     successLog(`1. Vite generated project<${projectName}> successfully `)
 
     // 进行依赖注册
     await runCommand(tool, ['install'], { cwd: projectPath })
-    successLog(`2. project<${projectName}> dependencies installed successfully `)
+    successLog(
+      `2. project<${projectName}> dependencies installed successfully `
+    )
 
     callback && callback()
   }
